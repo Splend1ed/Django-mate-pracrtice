@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="tasks-info-title">
+        <h1 class="task-info-text">
+            Tags
+            <a class="link-to-page btn btn-primary" href="{% url "app:tag-create" %}">Create</a>
+        </h1>
+    </div>
+    <hr>
+    {% if tag_list %}
+        <table class="table">
+            <tr>
+                <th class="table-element table-title">Name</th>
+                <th class="table-element table-title">Update</th>
+                <th class="table-element table-title">Delete</th>
+            </tr>
+            {% for tag in tag_list %}
+                <tr>
+                    <td class="table-element table-el-name">{{ tag.name }}</td>
+                    <td class="table-element"><a class="update-btn" href="{% url "app:tag-update" pk=tag.id %}">Update</a></td>
+                    <td class="table-element"><a class="delete-btn" href="{% url "app:tag-delete" pk=tag.id %}">Delete</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h3>Empty tag list...</h3>
+    {% endif %}
+{% endblock %}

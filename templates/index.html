@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="tasks-info-title">
+        <h1 class="task-info-text">
+            TODO
+            <a class="link-to-page btn btn-primary" href="{% url "app:task-create" %}">Create</a>
+         </h1>
+    </div>
+    {% if task_list %}
+        <div class="tasks">
+            <hr>
+            {% for task in task_list %}
+                <div class="task-info">
+                    <h4 class="task-name">
+                        <b>{{ task.content }}</b>
+                        <a class="btn btn-outline-danger link-to-page" href="{% url "app:task-delete" task.id %}">Delete</a>
+                        <a class="btn btn-outline-secondary link-to-page" href="{% url  "app:task-update" task.id %}">Update</a>
+                    </h4>
+                    <p>
+                        Created at: <b>{{ task.created_date.year }}/{{ task.created_date.month }}/{{ task.created_date.day }} {{ task.created_date.time }}</b>
+                    </p>
+                    {% if task.deadline %}
+                        <p>Deadline: <b>{{ task.deadline.year }}/{{ task.deadline.month }}/{{ task.deadline.day }} {{ task.deadline.time }}</b></p>
+                    {% else %}
+                        <p>Deadline: <b>Unlimited</b></p>
+                    {% endif %}
+                    <p>
+                        Tags: {% for tag in task.tags.all %}<b>{{ tag }}</b> | {% endfor %}
+                    </p>
+                    {% if not task.status %}
+                        <a class="not-done" href="{% url "app:task-redirect" pk=task.id %}">
+                            <span class="status-text-not-done">Not Done</span>
+                            <span class="status-text-hover">Done!</span>
+                        </a>
+                    {% else %}
+                        <a class="done" href="{% url "app:task-redirect" pk=task.id %}">
+                            <span class="status-text-done">Done!</span>
+                            <span class="status-text-not-done-button">Not Done</span>
+                        </a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% block pagination %}{% include "includes/pagination.html" %}{% endblock %}
+    {% else%}
+        <hr>
+        <h2>Empty task list...</h2>
+    {% endif %}
+
+{% endblock %}
