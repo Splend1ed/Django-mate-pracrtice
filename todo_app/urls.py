@@ -1,5 +1,5 @@
 from django.urls import path
-from app.views import (
+from todo_app.views import (
     MainPage,
     TagsListView,
     TaskCreateView,
@@ -23,4 +23,4 @@ urlpatterns = [
     path("task/<int:pk>/status-change/", status_task_redirect, name="task-redirect")
 ]
 
-app_name = "app"
+app_name = "todo_app"

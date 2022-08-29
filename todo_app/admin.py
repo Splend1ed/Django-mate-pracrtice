@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group, User
 
-from app.models import Tag, Task
+from todo_app.models import Tag, Task
 
 
 class TagAdmin(admin.ModelAdmin):

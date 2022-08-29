@@ -1,10 +1,9 @@
-from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
-from app.forms import CreateUpdateTaskForm
-from app.models import Tag, Task
+from todo_app.forms import CreateUpdateTaskForm
+from todo_app.models import Tag, Task
 
 
 class MainPage(ListView):

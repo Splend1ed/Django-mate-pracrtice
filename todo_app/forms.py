@@ -4,7 +4,7 @@ from django.forms import (
     ModelMultipleChoiceField,
 )
 
-from app.models import Tag, Task
+from todo_app.models import Tag, Task
 from bootstrap_datepicker_plus.widgets import DateTimePickerInput
 
 
