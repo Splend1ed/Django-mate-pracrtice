@@ -23,21 +23,21 @@ class TagCreateView(CreateView):
     template_name = "tag-form.html"
     model = Tag
     fields = "__all__"
-    success_url = reverse_lazy("app:tags-list")
+    success_url = reverse_lazy("tags-list")
 
 
 class TagDeleteView(DeleteView):
     model = Tag
     queryset = Tag.objects.all()
     template_name = "tag-delete-confirm.html"
-    success_url = reverse_lazy("app:tags-list")
+    success_url = reverse_lazy("tags-list")
 
 
 class TagUpdateView(UpdateView):
     model = Tag
     queryset = Tag.objects.all()
     template_name = "tag-form.html"
-    success_url = reverse_lazy("app:tags-list")
+    success_url = reverse_lazy("tags-list")
     fields = "__all__"
 
 # ---------------------------------------------------------------------------------
@@ -47,21 +47,21 @@ class TaskCreateView(CreateView):
     template_name = "task-form.html"
     model = Task
     form_class = CreateUpdateTaskForm
-    success_url = reverse_lazy("app:index")
+    success_url = reverse_lazy("index")
 
 
 class TaskDeleteView(DeleteView):
     model = Task
     queryset = Task.objects.all()
     template_name = "task-delete-confirm-view.html"
-    success_url = reverse_lazy("app:index")
+    success_url = reverse_lazy("index")
 
 
 class TaskUpdateView(UpdateView):
     model = Task
     form_class = CreateUpdateTaskForm
     template_name = "task-form.html"
-    success_url = reverse_lazy("app:index")
+    success_url = reverse_lazy("index")
 
 
 def status_task_redirect(request, pk):
@@ -71,5 +71,5 @@ def status_task_redirect(request, pk):
     else:
         task.status = True
     task.save()
-    return redirect("app:index")
+    return redirect("index")
 # ---------------------------------------------------------------------------------

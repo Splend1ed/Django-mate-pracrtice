@@ -4,7 +4,7 @@
     <div class="tasks-info-title">
         <h1 class="task-info-text">
             Tags
-            <a class="link-to-page btn btn-primary" href="{% url "todo_app:tag-create" %}">Create</a>
+            <a class="link-to-page btn btn-primary" href="{% url "tag-create" %}">Create</a>
         </h1>
     </div>
     <hr>
@@ -18,8 +18,8 @@
             {% for tag in tag_list %}
                 <tr>
                     <td class="table-element table-el-name">{{ tag.name }}</td>
-                    <td class="table-element"><a class="update-btn" href="{% url "todo_app:tag-update" pk=tag.id %}">Update</a></td>
-                    <td class="table-element"><a class="delete-btn" href="{% url "todo_app:tag-delete" pk=tag.id %}">Delete</a></td>
+                    <td class="table-element"><a class="update-btn" href="{% url "tag-update" pk=tag.id %}">Update</a></td>
+                    <td class="table-element"><a class="delete-btn" href="{% url "tag-delete" pk=tag.id %}">Delete</a></td>
                 </tr>
             {% endfor %}
         </table>
